@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\RpgMvc.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\LUCAS\\Desktop\\projetos\\RpgMvc\\wwwroot\\Images\\castle.png",
+      "PackagePath": "staticwebassets\\Images\\castle.png"
+    },
+    {
       "Id": "C:\\Users\\LUCAS\\Desktop\\projetos\\RpgMvc\\wwwroot\\Images\\logo.png",
       "PackagePath": "staticwebassets\\Images\\logo.png"
     },

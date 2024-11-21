@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "K6f4FlQ7KP+Yee0fK1xs4YHP+l8rkiU1SuVfW4wn3LI=",
+  "Hash": "Kl8kPkVEoKqRjLeXqLNCeyCavjOl4zlnnsPh24H0U9Y=",
   "Source": "RpgMvc",
   "BasePath": "_content/RpgMvc",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\LUCAS\\Desktop\\projetos\\RpgMvc\\wwwroot\\Images\\castle.png",
+      "SourceId": "RpgMvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LUCAS\\Desktop\\projetos\\RpgMvc\\wwwroot\\",
+      "BasePath": "_content/RpgMvc",
+      "RelativePath": "Images/castle.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\castle.png"
     },
     {
       "Identity": "C:\\Users\\LUCAS\\Desktop\\projetos\\RpgMvc\\wwwroot\\Images\\logo.png",
