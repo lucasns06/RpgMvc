@@ -33,3 +33,20 @@ li a{
   width: 100%;
   max-width: 512px;
 }
+.userImg{
+  width: 100%;
+  max-width: 256px;
+}
+@media (max-width: 548px) {
+  .formPrincipal{
+    flex-direction: column-reverse;
+  }
+  .userImg{
+    max-width: 128px;
+  }
+}
+@media (max-width: 992px) {
+  .ulGap{
+    gap: 1rem;
+  }
+}
