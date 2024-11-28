@@ -20,7 +20,10 @@ namespace RpgMvc.Controllers
         {
             return View();
         }
-
+        public IActionResult Create()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -79,6 +82,31 @@ namespace RpgMvc.Controllers
                 }
                 else
                     throw new System.Exception(serialized);
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+                return RedirectToAction("Create");
+            }
+        }
+        [HttpGet]
+        public async Task<ActionResult> DetailsAsync(int? id)
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await httpClient.GetAsync(uriBase + id.ToString());
+                string serialized = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    PersonagemViewModel p = await Task.Run(() =>
+                    JsonConvert.DeserializeObject<PersonagemViewModel>(serialized));
+                    return View(p);
+                }else{
+                    throw new System.Exception(serialized);
+                }
             }
             catch (System.Exception ex)
             {
