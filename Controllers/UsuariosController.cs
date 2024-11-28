@@ -12,18 +12,18 @@ using RpgMvc.Models;
 
 namespace RpgMvc.Controllers
 {
-    [Route("[controller]")]
+    // [Route("[controller]")]
     public class UsuariosController : Controller
     {
         public string uriBase = "http://www.lucasns06.somee.com/rpgapi/Usuarios/";
 
-        [Route("Registrar")]
+        // [Route("Registrar")]
         [HttpGet]
         public ActionResult Index()
         {
             return View("CadastrarUsuario");
         }
-        [Route("RegistrarPost")]
+        // [Route("RegistrarPost")]
         [HttpPost]
         public async Task<ActionResult> RegistrarAsync(UsuarioViewModel u)
         {
@@ -55,13 +55,13 @@ namespace RpgMvc.Controllers
                 return RedirectToAction("index");
             }
         }
-        [Route("Autenticar")]
+        // [Route("Autenticar")]
         [HttpGet]
         public ActionResult IndexLogin()
         {
             return View("AutenticarUsuario");
         }
-        [Route("AutenticarPost")]
+        // [Route("AutenticarPost")]
         [HttpPost]
         public async Task<ActionResult> AutenticarAsync(UsuarioViewModel u)
         {

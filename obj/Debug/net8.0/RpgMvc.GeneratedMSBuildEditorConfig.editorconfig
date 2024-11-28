@@ -9,55 +9,55 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RpgMvc
 build_property.RootNamespace = RpgMvc
-build_property.ProjectDir = C:\Users\LUCAS\Desktop\projetos\RpgMvc\
+build_property.ProjectDir = e:\Curso DS\Desenvolvimento de sistemas\RpgMvc\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\LUCAS\Desktop\projetos\RpgMvc
+build_property.MSBuildProjectDirectory = e:\Curso DS\Desenvolvimento de sistemas\RpgMvc
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Home/Index.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Home/Privacy.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Personagens/Personagens.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWdlbnNcUGVyc29uYWdlbnMuY3NodG1s
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Personagens/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWdlbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Shared/Error.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Shared/_LoginPartialRpg.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Shared/_LoginPartialRpg.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWxScGcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Shared/_ValidationScriptsPartial.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Usuarios/AutenticarUsuario.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Usuarios/AutenticarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQXV0ZW50aWNhclVzdWFyaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Usuarios/CadastrarUsuario.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Usuarios/CadastrarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ2FkYXN0cmFyVXN1YXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/_ViewImports.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/_ViewStart.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/LUCAS/Desktop/projetos/RpgMvc/Views/Shared/_Layout.cshtml]
+[e:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-z01m3r0ocj

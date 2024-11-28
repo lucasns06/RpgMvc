@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RpgMvc.Models.Enuns;
 
 namespace RpgMvc.Models
 {
@@ -13,8 +14,8 @@ namespace RpgMvc.Models
         public int Forca { get; set; }
         public int Defesa { get; set; }
         public int Inteligencia { get; set; }
-        public int Classe { get; set; }
-        public string FotoPersonagem { get; set; } = string.Empty;
+        public ClasseEnum Classe { get; set; }
+        public  byte[]?  FotoPersonagem { get; set; } 
         public int UsuarioId { get; set; }
         public object Usuario { get; set; }  = string.Empty;
         public object Arma { get; set; }  = string.Empty;  

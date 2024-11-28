@@ -1,5 +1,7 @@
 using System.Diagnostics;
+using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RpgMvc.Models;
 
 namespace RpgMvc.Controllers;
@@ -12,12 +14,10 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
-    public IActionResult Index()
+    public ActionResult Index()
     {
         return View();
     }
-
     public IActionResult Privacy()
     {
         return View();
