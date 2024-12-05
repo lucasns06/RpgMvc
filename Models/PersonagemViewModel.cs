@@ -16,11 +16,12 @@ namespace RpgMvc.Models
         public int Inteligencia { get; set; }
         public ClasseEnum Classe { get; set; }
         public  byte[]?  FotoPersonagem { get; set; } 
-        public int UsuarioId { get; set; }
-        public object Usuario { get; set; }  = string.Empty;
-        public object Arma { get; set; }  = string.Empty;  
         public int Disputas { get; set; }
         public int Vitorias { get; set; }
         public int Derrotas { get; set; }
+        //public int UsuarioId { get; set; }
+        //public object Usuario { get; set; }  = string.Empty;
+        //public object Arma { get; set; }  = string.Empty;  
+        
     }
 }

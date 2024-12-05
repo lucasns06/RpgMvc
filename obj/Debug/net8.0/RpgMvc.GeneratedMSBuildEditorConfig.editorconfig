@@ -9,63 +9,67 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RpgMvc
 build_property.RootNamespace = RpgMvc
-build_property.ProjectDir = E:\Curso DS\Desenvolvimento de sistemas\RpgMvc\
+build_property.ProjectDir = D:\Lucas\DS\rpgapi-FrontEnd\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\Curso DS\Desenvolvimento de sistemas\RpgMvc
+build_property.MSBuildProjectDirectory = D:\Lucas\DS\rpgapi-FrontEnd
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Home/Index.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Home/Privacy.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Personagens/Create.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Personagens/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWdlbnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Personagens/Details.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Personagens/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWdlbnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Personagens/Index.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Personagens/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWdlbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Personagens/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uYWdlbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Shared/Error.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Shared/_LoginPartialRpg.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Shared/_LoginPartialRpg.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWxScGcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Usuarios/AutenticarUsuario.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Usuarios/AutenticarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQXV0ZW50aWNhclVzdWFyaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Usuarios/CadastrarUsuario.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Usuarios/CadastrarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ2FkYXN0cmFyVXN1YXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/_ViewImports.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/_ViewStart.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Curso DS/Desenvolvimento de sistemas/RpgMvc/Views/Shared/_Layout.cshtml]
+[D:/Lucas/DS/rpgapi-FrontEnd/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-z01m3r0ocj
