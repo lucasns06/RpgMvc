@@ -1,0 +1,14 @@
+@model RpgMvc.Models.UsuarioViewModel
+
+<h2>Perfil do Usuário</h2>
+<hr />
+
+<div class="perfil-container">
+    <p><strong>Nome de Usuário:</strong> @Model.Username</p>
+    <p><strong>Último Acesso:</strong> @Model.DataAcesso?.ToString("dd/MM/yyyy HH:mm")</p>
+
+    @if (Model.Foto != null)
+    {
+        <img src="data:image/png;base64,@Convert.ToBase64String(Model.Foto)" alt="Foto do Usuário" style="width: 150px; height: 150px; border-radius: 50%;" />
+    }
+</div>

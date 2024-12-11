@@ -153,7 +153,7 @@ namespace RpgMvc.Controllers
                 var content = new StringContent(JsonConvert.SerializeObject(p));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 
-                HttpResponseMessage response = await httpClient.PostAsync(uriBase, content);
+                HttpResponseMessage response = await httpClient.PutAsync(uriBase, content);
                 string serialized = await response.Content.ReadAsStringAsync();
 
                 if(response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -179,7 +179,7 @@ namespace RpgMvc.Controllers
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 
-                HttpResponseMessage response = await httpClient.GetAsync(uriBase + id.ToString());
+                HttpResponseMessage response = await httpClient.DeleteAsync(uriBase + id.ToString());
                 string serialized = await response.Content.ReadAsStringAsync();
 
                 if(response.StatusCode == System.Net.HttpStatusCode.OK)

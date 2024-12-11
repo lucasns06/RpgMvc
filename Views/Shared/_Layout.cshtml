@@ -11,38 +11,44 @@
 </head>
 
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-4">
-        <div class="container-fluid d-flex justify-content-between">
-            <a asp-area="" asp-controller="Home" asp-action="Index"><img src="@Url.Content("~/images/logo.png")" class="headerImg"></a>
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RpgApi</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse justify-content-between collapse align-items-center">
-                <ul class="navbar-nav flex-grow-1 justify-content-center ulGap">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-                    </li>
-                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Personagens" asp-action="Index">Personagens</a>
-                    </li>
-                    @* <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li> *@
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Registrar-se</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-lg text-white" asp-area="" asp-controller="Usuarios" asp-action="IndexLogin">Login</a>
-                    </li>
-                </ul>
-                @* <partial name ="_LoginPartialRpg" /> *@
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-4">
+            <div class="container-fluid d-flex justify-content-between">
+                <a asp-area="" asp-controller="Home" asp-action="Index"><img src="@Url.Content("~/images/logo.png")"
+                        class="headerImg"></a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RpgApi</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse justify-content-between collapse align-items-center">
+                    <ul class="navbar-nav flex-grow-1 justify-content-center ulGap">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Personagens"
+                                asp-action="Index">Personagens</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios"
+                                asp-action="Index">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios"
+                                asp-action="Cadastro">Registrar-se</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary btn-lg text-white" asp-area="" asp-controller="Usuarios"
+                                asp-action="IndexLogin">Login</a>
+                        </li>
+                    </ul>
+                    @* <partial name ="_LoginPartialRpg" /> *@
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -56,7 +62,9 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

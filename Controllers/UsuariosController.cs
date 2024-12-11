@@ -17,13 +17,41 @@ namespace RpgMvc.Controllers
     {
         public string uriBase = "http://www.lucasns06.somee.com/rpgapi/Usuarios/";
 
-        // [Route("Registrar")]
         [HttpGet]
         public ActionResult Index()
         {
+            try
+            {
+                string usuarioJson = HttpContext.Session.GetString("SessionUsuario");
+                if (string.IsNullOrEmpty(usuarioJson))
+                {
+                    TempData["MensagemErro"] = "Usuário não autenticado.";
+                    return RedirectToAction("IndexLogin", "Usuarios");
+                }
+
+                UsuarioViewModel usuario = JsonConvert.DeserializeObject<UsuarioViewModel>(usuarioJson);
+                return View(usuario);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+                return RedirectToAction("IndexLogin", "Usuarios");
+            }
+
+        }
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // Limpa toda a sessão do usuário
+            TempData["Mensagem"] = "Você saiu com sucesso.";
+            return RedirectToAction("IndexLogin", "Usuarios");
+        }
+
+        [HttpGet]
+        public ActionResult Cadastro()
+        {
             return View("CadastrarUsuario");
         }
-        // [Route("RegistrarPost")]
         [HttpPost]
         public async Task<ActionResult> RegistrarAsync(UsuarioViewModel u)
         {
@@ -80,6 +108,7 @@ namespace RpgMvc.Controllers
                 {
                     UsuarioViewModel uLogado = JsonConvert.DeserializeObject<UsuarioViewModel>(serialized);
                     HttpContext.Session.SetString("SessionTokenUsuario", uLogado.Token);
+                    HttpContext.Session.SetString("SessionUsuario", JsonConvert.SerializeObject(uLogado));
                     TempData["Mensagem"] = string.Format("Bem-vindo {0}!!!", uLogado.Username);
                     return RedirectToAction("Index", "Personagens");
                 }
