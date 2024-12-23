@@ -29,7 +29,7 @@ namespace RpgMvc.Controllers
         {
             return View("Error!");
         }
-        
+
         // [Route("Personagens")]
         [HttpGet]
         public async Task<ActionResult> IndexAsync()
@@ -69,13 +69,13 @@ namespace RpgMvc.Controllers
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                
+
                 var content = new StringContent(JsonConvert.SerializeObject(p));
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");   
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 HttpResponseMessage response = await httpClient.PostAsync(uriBase, content);
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     TempData["Mensagem"] = string.Format("Personagem {0}, Id {1} salvo com sucesso!", p.Nome, serialized);
                     return RedirectToAction("Index");
@@ -104,7 +104,9 @@ namespace RpgMvc.Controllers
                     PersonagemViewModel p = await Task.Run(() =>
                     JsonConvert.DeserializeObject<PersonagemViewModel>(serialized));
                     return View(p);
-                }else{
+                }
+                else
+                {
                     throw new System.Exception(serialized);
                 }
             }
@@ -127,11 +129,13 @@ namespace RpgMvc.Controllers
 
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    PersonagemViewModel p = await Task.Run( () => JsonConvert.DeserializeObject<PersonagemViewModel>(serialized));
+                    PersonagemViewModel p = await Task.Run(() => JsonConvert.DeserializeObject<PersonagemViewModel>(serialized));
                     return View(p);
-                }else{
+                }
+                else
+                {
                     throw new System.Exception(serialized);
                 }
             }
@@ -148,15 +152,15 @@ namespace RpgMvc.Controllers
             {
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
-                
+
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 var content = new StringContent(JsonConvert.SerializeObject(p));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                
+
                 HttpResponseMessage response = await httpClient.PutAsync(uriBase, content);
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     TempData["Mensagem"] = string.Format("Personagem {0}, Id {1} salvo com sucesso!", p.Nome, serialized);
                     return RedirectToAction("Index");
@@ -178,15 +182,16 @@ namespace RpgMvc.Controllers
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                
+
                 HttpResponseMessage response = await httpClient.DeleteAsync(uriBase + id.ToString());
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     TempData["Mensagem"] = string.Format("Personagem Id {0} removido com sucesso", id);
                     return RedirectToAction("Index");
-                }else
+                }
+                else
                     throw new System.Exception(serialized);
             }
             catch (System.Exception ex)
@@ -195,5 +200,69 @@ namespace RpgMvc.Controllers
                 return RedirectToAction("Index");
             }
         }
+        [HttpGet]
+        public async Task<ActionResult> DisputaGeralAsync()
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                string uriBuscaPersonagens = "https://rpgapilucasns.azurewebsites.net/Personagens/getall";
+                HttpResponseMessage response = await httpClient.GetAsync(uriBuscaPersonagens);
+
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                List<PersonagemViewModel> listaPersonagens = await Task.Run(() => JsonConvert.DeserializeObject<List<PersonagemViewModel>>(serialized));
+
+                string uriDisputa = "https://rpgapilucasns.azurewebsites.net/Disputas/DisputaEmGrupo";
+                DisputaViewModel disputa = new DisputaViewModel();
+                disputa.ListaIdPersonagens = new List<int>();
+                disputa.ListaIdPersonagens.AddRange(listaPersonagens.Select(p => p.Id));
+
+                var content = new StringContent(JsonConvert.SerializeObject(disputa));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                response = await httpClient.PostAsync(uriDisputa, content);
+
+                serialized = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    disputa = await Task.Run(() => JsonConvert.DeserializeObject<DisputaViewModel>(serialized));
+                    TempData["Mensagem"] = string.Join("<br/>", disputa.Resultados);
+                }
+                else
+                    throw new System.Exception(serialized);
+
+                return RedirectToAction("Index", "Personagens");
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpGet]
+        public async Task<ActionResult> ZerarRankingRestaurarVidasAsync()
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                string uriComplementar = "ZerarRankingRestaurarVidas";
+                HttpResponseMessage response = await httpClient.PutAsync(uriBase + uriComplementar, null);
+                string serialized = await response.Content.ReadAsStringAsync();
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    TempData["Mensagem"] = "Rankings zerados e vidas dos personagens restauradas com sucesso.";
+                else
+                    throw new System.Exception(serialized);
+            }
+            catch (System.Exception ex)
+            { TempData["MensagemErro"] = ex.Message; }
+            return RedirectToAction("Index");
+        }
+
     }
 }
