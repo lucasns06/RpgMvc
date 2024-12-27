@@ -24,7 +24,7 @@ namespace RpgMvc.Controllers
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                string uriBuscaPersonagens = "https://rpgapilucasns.azurewebsites.net/Personagens/GetAll";
+                string uriBuscaPersonagens = "http://www.lucasns06.somee.com/rpgapi/Personagens/GetAll";
                 HttpResponseMessage response = await httpClient.GetAsync(uriBuscaPersonagens);
                 string serialized = await response.Content.ReadAsStringAsync();
 
@@ -86,7 +86,7 @@ namespace RpgMvc.Controllers
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                string uriBuscaPersonagens = "https://rpgapilucasns.azurewebsites.net/Personagens/GetAll";
+                string uriBuscaPersonagens = "http://www.lucasns06.somee.com/rpgapi/Personagens/GetAll";
                 HttpResponseMessage response = await httpClient.GetAsync(uriBuscaPersonagens);
                 string serialized = await response.Content.ReadAsStringAsync();
 
@@ -101,7 +101,7 @@ namespace RpgMvc.Controllers
                 {
                     throw new System.Exception(serialized);
                 }
-                string uriBuscaHabilidades = "https://rpgapilucasns.azurewebsites.net/PersonagemHabilidades/GetHabilidades";
+                string uriBuscaHabilidades = "http://www.lucasns06.somee.com/rpgapi/PersonagemHabilidades/GetHabilidades";
                 response = await httpClient.GetAsync(uriBuscaHabilidades);
                 serialized = await response.Content.ReadAsStringAsync();
 

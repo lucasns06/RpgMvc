@@ -37,6 +37,12 @@ li a{
   width: 100%;
   max-width: 256px;
 }
+.loginPartial{
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
 @media (max-width: 548px) {
   .formPrincipal{
     flex-direction: column-reverse;

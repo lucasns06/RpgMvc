@@ -14,7 +14,7 @@ namespace RpgMvc.Controllers
     // [Route("[controller]")]
     public class PersonagensController : Controller
     {
-        public string uriBase = "https://rpgapilucasns.azurewebsites.net/Personagens/";
+        public string uriBase = "http://www.lucasns06.somee.com/rpgapi/Personagens/";
 
         public IActionResult Index()
         {
@@ -36,7 +36,18 @@ namespace RpgMvc.Controllers
         {
             try
             {
-                string uriComplementar = "GetAll";
+                if (string.IsNullOrEmpty(HttpContext.Session.GetString("SessionIdUsuario")))
+                {
+                    return RedirectToAction("Sair", "Usuarios");
+                }
+                string perfil = HttpContext.Session.GetString("SessionPerfilUsuario");
+                ViewBag.Perfil = perfil;
+
+                //string uriComplementar = "GetAll";
+                int usuarioId = int.Parse(HttpContext.Session.GetString("SessionIdUsuario"));
+                string uriComplementar = (perfil == "Admin") ? "GetAll" : $"GetByPerfil/{usuarioId}";
+
+
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -46,14 +57,12 @@ namespace RpgMvc.Controllers
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    List<PersonagemViewModel> listaPersonagem = await Task.Run(() => JsonConvert.DeserializeObject<List<PersonagemViewModel>>(serialized));
+                    List<PersonagemViewModel> listaPersonagens = await Task.Run(() => JsonConvert.DeserializeObject<List<PersonagemViewModel>>(serialized));
 
-                    return View(listaPersonagem);
+                    return View(listaPersonagens);
                 }
                 else
-                {
                     throw new System.Exception(serialized);
-                }
             }
             catch (System.Exception ex)
             {

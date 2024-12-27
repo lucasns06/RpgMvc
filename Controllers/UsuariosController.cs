@@ -20,24 +20,7 @@ namespace RpgMvc.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            try
-            {
-                string usuarioJson = HttpContext.Session.GetString("SessionUsuario");
-                if (string.IsNullOrEmpty(usuarioJson))
-                {
-                    TempData["MensagemErro"] = "Usuário não autenticado.";
-                    return RedirectToAction("IndexLogin", "Usuarios");
-                }
-
-                UsuarioViewModel usuario = JsonConvert.DeserializeObject<UsuarioViewModel>(usuarioJson);
-                return View(usuario);
-            }
-            catch (Exception ex)
-            {
-                TempData["MensagemErro"] = ex.Message;
-                return RedirectToAction("IndexLogin", "Usuarios");
-            }
-
+            return View("CadastrarUsuario");
         }
         [HttpPost]
         public IActionResult Logout()
@@ -83,13 +66,11 @@ namespace RpgMvc.Controllers
                 return RedirectToAction("index");
             }
         }
-        // [Route("Autenticar")]
         [HttpGet]
         public ActionResult IndexLogin()
         {
             return View("AutenticarUsuario");
         }
-        // [Route("AutenticarPost")]
         [HttpPost]
         public async Task<ActionResult> AutenticarAsync(UsuarioViewModel u)
         {
@@ -107,8 +88,16 @@ namespace RpgMvc.Controllers
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     UsuarioViewModel uLogado = JsonConvert.DeserializeObject<UsuarioViewModel>(serialized);
+
                     HttpContext.Session.SetString("SessionTokenUsuario", uLogado.Token);
-                    HttpContext.Session.SetString("SessionUsuario", JsonConvert.SerializeObject(uLogado));
+                    HttpContext.Session.SetString("SessionUsername", uLogado.Username);    
+
+                    HttpContext.Session.SetString("SessionPerfilUsuario", uLogado.Perfil);
+                    HttpContext.Session.SetString("SessionIdUsuario", uLogado.Id.ToString());
+
+                     if(uLogado.Foto != null)
+                        HttpContext.Session.Set("SessionFotoUsuario", uLogado.Foto);
+                    
                     TempData["Mensagem"] = string.Format("Bem-vindo {0}!!!", uLogado.Username);
                     return RedirectToAction("Index", "Personagens");
                 }
@@ -123,5 +112,149 @@ namespace RpgMvc.Controllers
                 return IndexLogin();
             }
         }
+        [HttpGet]
+        public async Task<ActionResult> IndexInformacoesAsync()
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+
+                string login = HttpContext.Session.GetString("SessionUsername"); string uriComplementar =
+                $"GetByLogin/{login}";
+                HttpResponseMessage response = await httpClient.GetAsync(uriBase + uriComplementar);
+                string serialized = await response.Content.ReadAsStringAsync(); if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    UsuarioViewModel u = await Task.Run(() =>
+                   JsonConvert.DeserializeObject<UsuarioViewModel>(serialized));
+                    return View(u);
+                }
+                else
+                {
+                    throw new System.Exception(serialized);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult> AlterarEmail(UsuarioViewModel u)
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                string uriComplementar = "AtualizarEmail";
+                var content = new StringContent(JsonConvert.SerializeObject(u));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                HttpResponseMessage response = await httpClient.PutAsync(uriBase + uriComplementar, content);
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    TempData["Mensagem"] = "E-mail alterado com sucesso.";
+                else
+                    throw new System.Exception(serialized);
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+
+            }
+            return RedirectToAction("IndexInformacoes");
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> ObterDadosAlteracaoSenha()
+        {
+            UsuarioViewModel viewModel = new UsuarioViewModel();
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                string login = HttpContext.Session.GetString("SessionUsername");
+                string uriComplementar = $"GetByLogin/{login}";
+                HttpResponseMessage response = await httpClient.GetAsync(uriBase + uriComplementar);
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                TempData["TituloModalExterno"] = "Alteração de Senha";
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    viewModel = await Task.Run(() => JsonConvert.DeserializeObject<UsuarioViewModel>(serialized));
+                    return PartialView("_AlteracaoSenha", viewModel);
+                }
+                else
+                    throw new System.Exception(serialized);
+
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+                return RedirectToAction("IndexInformacoes");
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AlterarSenha(UsuarioViewModel u)
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                string uriComplementar = "AlterarSenha";
+                u.Username = HttpContext.Session.GetString("SessionUsername");
+
+                var content = new StringContent(JsonConvert.SerializeObject(u));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                HttpResponseMessage response = await httpClient.PutAsync(uriBase + uriComplementar, content);
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    string mensagem = "Senha alterada com sucesso.";
+                    TempData["Mensagem"] = mensagem; 
+                    return Json(mensagem); 
+                }
+                else
+                    throw new System.Exception(serialized);
+            }
+            catch (System.Exception ex)
+            {
+                return Json(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Sair()
+        {
+            try
+            {
+                HttpContext.Session.Remove("SessionTokenUsuario");
+                HttpContext.Session.Remove("SessionUsername");
+                HttpContext.Session.Remove("SessionPerfilUsuario");
+                HttpContext.Session.Remove("SessionIdUsuario");
+                HttpContext.Session.Remove("SessionFotoUsuario");
+
+
+                return RedirectToAction("Index", "Home");
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+                return RedirectToAction("IndexInformacoes");
+            }
+        }
+
+
+
     }
 }
